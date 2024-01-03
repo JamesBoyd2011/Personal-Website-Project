@@ -3,8 +3,13 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+::selection {
+    background:red;
+    color:white;
+}
+
 body {
-    display:grid;
+    display: grid;
     grid-template-rows: 5% 95%;
     position: absolute;
     margin: unset;
@@ -15,8 +20,8 @@ body {
 }
 
 header {
-    margin:unset;
-    display:flex;
+    margin: unset;
+    display: flex;
     justify-content: center;
 }
 
@@ -24,7 +29,7 @@ header {
 nav {
     display: flex;
     font-weight: bold;
-    border-radius: 0 0 25px 25px;   
+    border-radius: 0 0 25px 25px;
     align-items: center;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     box-shadow: 0px -5px 5px 1px inset #ccc;
@@ -32,64 +37,160 @@ nav {
 
 
 
-nav>a ,nav>a:link,nav>a:visited {
-    color:black;
+nav>a,
+nav>a:link,
+nav>a:visited {
+    color: black;
     text-decoration: none;
     padding: 8px 20px;
 }
 
-nav > a + a {
-    border-left:1px solid #ccc;
+nav>a+a {
+    border-left: 1px solid #ccc;
 }
 
 
 nav>a.active {
-    color:red;
+    color: red;
 }
 
-nav>a:hover{
+nav>a:hover {
     text-decoration: underline;
 }
 
 main {
     display: flex;
     justify-content: center;
-    align-items:center;
+    align-items: center;
     height: 100%;
-    margin:0 10%;
+    margin: 0 10%;
 }
 
-main > #homeContent{
+main>#homeContent {
     text-shadow: 0 0 24px gray;
-    color:white;
+    color: white;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 10vw;
     text-align: center;
+    user-select: none;
 }
 
-main > #aboutContent{
+main>#aboutContent {
     display: flex;
     margin: auto;
 }
 
-main > #aboutContent > *{
-    padding:0 10px;
+main>#aboutContent>* {
+    padding: 0 10px;
     text-align: justify;
 }
 
-.circle{
+
+.circle {
     shape-outside: ellipse(80% 25% at 100% 50%);
     float: right;
-    height:100%;
-    width:50%;
+    height: 100%;
+    width: 50%;
 }
 
-main .circle.left{
+main .circle.left {
     shape-outside: ellipse(80% 25% at 0 50%);
-    float:left
+    float: left
 }
 
 main#portfolio {
     display: flex;
 }
 
+form h2 {
+    color: white;
+    text-shadow: 1px 1px 5px black;
+    text-align: center;
+    cursor: default;
+}
+
+
+form {
+    padding: 20px;
+    width: 5in;
+    border-radius: 25px;
+    display: grid;
+    row-gap: 20px;
+    box-shadow: 0 0 9px 1px #ccc inset, 0 0 8px 3px #ccc;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+form [label]:before {
+    content: attr(label);
+    position: absolute;
+    top: -10px;
+    left: -2px;
+    padding: 1px 4px;
+    border-radius: 6px 10px 10px 0;
+    background: darkgray;
+    color: white;
+}
+
+form [label]:focus-within:before {
+    background: red;
+}
+form [submit]{
+    display:inline-block;
+    text-align:center;
+    border: 1px solid #ccc;
+    border-radius:25px;
+    cursor:pointer;
+}
+form [submit]:before {
+    content: "SUBMIT";
+    text-align: center;
+    text-shadow: -1px 1px 5px black;
+    display: inline-block;
+    letter-spacing: 1ch;
+    cursor: pointer;
+    font-size: 1.5em;
+    margin:auto;
+}
+
+form [submit]:hover {
+    color: red;
+    border: 1px solid red;
+}
+
+form [submit]>input {
+    display: none;
+}
+
+form input[type='text'],
+form textarea {
+    caret-color: red;
+    padding-top: 12px;
+    box-shadow: 0px 8px 4px -2px #ccc inset;
+    resize: none;
+    width: 100%;
+    border: 1px groove #ccc;
+    padding-left: 1ch;
+}
+
+form input[type='text']:focus-visible,
+form textarea:focus-visible {
+    outline: unset;
+    box-shadow: 0px 4px 8px -2px red inset;
+
+}
+
+
+form [label] {
+    position: relative;
+}
+
+form input[type='text']:focus-visible,
+form textarea:focus-visible,
+form [label]:focus-within:before ,form [submit]:hover {
+    transition: all 1s;
+}
+
+form [submit],form input[type='text'],form textarea,form [label],form [label]:before{
+    transition: all 0.5s;
+}
